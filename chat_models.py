@@ -191,6 +191,8 @@ class ChatQWen(BaseChatOpenAI):
             if v is not None
         }
 
+        self.streaming = True if self.model_name.startswith("qwq") else False
+
         if not (self.root_client or None):
             sync_specific: dict = {"http_client": self.http_client}
             self.root_client = openai.OpenAI(
